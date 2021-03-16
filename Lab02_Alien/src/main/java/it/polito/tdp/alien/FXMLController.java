@@ -67,8 +67,11 @@ public class FXMLController {
 	    		txtRisultato.setText("ERRORE: La parola non contiene solo lettere");
 	    		return;
 	    	}
-    	
-    	txtRisultato.setText(dd.translateWord(parole).toString());
+    		
+    		if(dd.getMappaParole().get(parole)==null)
+    		txtRisultato.setText("ERRORE: Non è ancora stata inserita nessuna traduzione per la parola");
+    		else
+    	    txtRisultato.setText(dd.translateWord(parole).toString());
     	
     	}
     	
@@ -78,7 +81,9 @@ public class FXMLController {
     @FXML
     void doReset(ActionEvent event) {
     	
-    
+    dd.ripulisci();
+    txtRisultato.clear();
+    txtInserisci.clear();
 
     }
 

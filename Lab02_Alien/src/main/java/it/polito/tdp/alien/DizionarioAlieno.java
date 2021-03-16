@@ -35,5 +35,15 @@ public class DizionarioAlieno {
 		return mappaParole.get(parolaAliena.toLowerCase());
 		
 	}
+	
+	
+	
+	public Map<String, Set<String>> getMappaParole() {
+		return mappaParole;
+	}
+
+	public void ripulisci() {
+		mappaParole.clear();
+	}
 
 }
