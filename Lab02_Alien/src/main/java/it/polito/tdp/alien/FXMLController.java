@@ -59,7 +59,7 @@ public class FXMLController {
     	    	}
     	
     	dd.addWord(parolaAliena, traduzione);
-    	//txtRisultato.setText("aggiunto:"+parolaAliena+""+traduzione);
+    	//txtRisultato.setText("ho aggiunto:"+parolaAliena+""+traduzione);
     	  	
     	}else {
     		
@@ -70,9 +70,11 @@ public class FXMLController {
     		
     		if(dd.getMappaParole().get(parole)==null)
     		txtRisultato.setText("ERRORE: Non è ancora stata inserita nessuna traduzione per la parola");
-    		else
+   		else {
+    			
+
     	    txtRisultato.setText(dd.translateWord(parole).toString());
-    	
+    		}
     	}
     	
     		txtInserisci.clear();
@@ -87,8 +89,7 @@ public class FXMLController {
 
     }
 
-   
-
+    
     @FXML
     void initialize() {
     	   assert txtInserisci != null : "fx:id=\"txtInserisci\" was not injected: check your FXML file 'Scene.fxml'.";

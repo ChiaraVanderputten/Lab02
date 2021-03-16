@@ -8,6 +8,7 @@ import java.util.Set;
 
 public class DizionarioAlieno {
 	
+	//primo punto Map <String,String> mappaParole
 	private Map <String, Set<String> > mappaParole;
 	
 	public DizionarioAlieno() {
@@ -15,6 +16,11 @@ public class DizionarioAlieno {
 	}
 	
 	public void addWord (String parolaAliena, String traduzione) {
+		
+		//per il primo punto 
+		//mappaParole.put(parolaAliena.toLowerCase(),traduione.toLowerCase());
+		
+		//per il secondo punto
 		
 		HashSet <String> parole =new HashSet <String>();
 		
@@ -29,14 +35,13 @@ public class DizionarioAlieno {
 		mappaParole.put(parolaAliena.toLowerCase(),parole);
 		
 	}
-	
+
+	//primo punto String
 	public Set<String> translateWord (String parolaAliena) {
 		
 		return mappaParole.get(parolaAliena.toLowerCase());
 		
 	}
-	
-	
 	
 	public Map<String, Set<String>> getMappaParole() {
 		return mappaParole;
