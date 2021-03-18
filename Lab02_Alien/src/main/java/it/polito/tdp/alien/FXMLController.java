@@ -43,8 +43,8 @@ public class FXMLController {
     		if(c==' ') {
     		spazio=i;
     		break;
+    		}       
     		}
-    	}
     	
     	String pattern = "[a-zA-Z]*";
     	
@@ -61,18 +61,34 @@ public class FXMLController {
     	dd.addWord(parolaAliena, traduzione);
     	//txtRisultato.setText("ho aggiunto:"+parolaAliena+""+traduzione);
     	  	
-    	}else {
+    	}
+    	else {
     		
     		if( !parole.matches(pattern)) {
 	    		txtRisultato.setText("ERRORE: La parola non contiene solo lettere");
 	    		return;
 	    	}
     		
-    		if(dd.getMappaParole().get(parole)==null)
-    		txtRisultato.setText("ERRORE: Non è ancora stata inserita nessuna traduzione per la parola");
-   		else {
+//    		if(dd.getMappaParole().get(parole)==null)
+//    		txtRisultato.setText("ERRORE: Non è ancora stata inserita nessuna traduzione per la parola");
+   		
+    		else if (parole.matches("[a-zA-Z?]*")){
     			
-
+    			int numPuntiDomanda = 0;
+    			for(int i=0; i<parole.length(); i++) 
+    				if(parole.charAt(i)=='?')
+    					numPuntiDomanda++;
+    			
+    			if(numPuntiDomanda>1)
+    				txtRisultato.setText("Troppe lettere incognite per trovare una traduzione");
+    			else if(dd.translateWord(parole)==null)
+    				txtRisultato.setText("La parola non ha traduzione nel dizionario");
+    			
+    	}else {
+    			
+//    			if(parole.contains("?")) {	
+//    			}
+    			
     	    txtRisultato.setText(dd.translateWord(parole).toString());
     		}
     	}

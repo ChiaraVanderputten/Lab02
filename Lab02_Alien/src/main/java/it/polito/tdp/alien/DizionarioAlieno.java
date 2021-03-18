@@ -3,6 +3,7 @@ package it.polito.tdp.alien;
 
 import java.util.HashMap;
 import java.util.HashSet;
+
 import java.util.Map;
 import java.util.Set;
 
@@ -39,7 +40,35 @@ public class DizionarioAlieno {
 	//primo punto String
 	public Set<String> translateWord (String parolaAliena) {
 		
+		if(mappaParole.get(parolaAliena)!=null)
 		return mappaParole.get(parolaAliena.toLowerCase());
+		
+		else if(parolaAliena.contains("?")) {
+			
+			Set <String> temp = new HashSet <>();
+			
+			for(String s : mappaParole.keySet()) {
+				int x=0;
+				   for(int i=0; i<parolaAliena.length();i++) {
+					    if(i<s.length()) {
+					    	if(s.charAt(i)==parolaAliena.charAt(i))
+					    		x++;
+						
+					}
+					    else
+					    	break;
+			}
+			
+			if(x==parolaAliena.length()-1)
+				temp.add(s.toLowerCase());
+				
+			
+		}
+			if(temp!=null)
+				return temp;
+		
+		}
+		return null;
 		
 	}
 	
@@ -50,5 +79,7 @@ public class DizionarioAlieno {
 	public void ripulisci() {
 		mappaParole.clear();
 	}
+
+	
 
 }
