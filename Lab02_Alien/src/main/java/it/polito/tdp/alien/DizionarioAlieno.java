@@ -45,30 +45,33 @@ public class DizionarioAlieno {
 		
 		else if(parolaAliena.contains("?")) {
 			
-			Set <String> temp = new HashSet <>();
+			Set <String> temp = new HashSet <>();     //creo una lista temporanea
 			
-			for(String s : mappaParole.keySet()) {
+			for(String s : mappaParole.keySet()) {   //itero tutte le parole aliene         
 				int x=0;
-				   for(int i=0; i<parolaAliena.length();i++) {
-					    if(i<s.length()) {
-					    	if(s.charAt(i)==parolaAliena.charAt(i))
-					    		x++;
+				   for(int i=0; i<parolaAliena.length();i++) {   //scannarizzo lettera per lettera la parola aliena contente "?"
+					    if(parolaAliena.length()==s.length()) {  //le due parole devono avere lo stesso numero di caratteri                   
+					    	if(s.charAt(i)==parolaAliena.charAt(i))  //se le lettere coincidono
+					    		x++;                                 //incremento il contatore che mi dice quante lettere sono simili a quelle di parolaAliena
 						
 					}
-					    else
-					    	break;
+					    else   break;   //se le due parole non hanno stessa lunghezza passo allaprossima
+					    	
 			}
 			
-			if(x==parolaAliena.length()-1)
-				temp.add(s.toLowerCase());
+			if(x==parolaAliena.length()-1) //se il n° di lettere uguali è pari a quello della parola aliena eccetto una -> ioè il "?"
+				temp.addAll(mappaParole.get(s));
 				
 			
 		}
-			if(temp!=null)
+			if(temp.isEmpty()) 
+				return null;
+			else
 				return temp;
-		
+			
 		}
 		return null;
+		
 		
 	}
 	

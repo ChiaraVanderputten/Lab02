@@ -48,7 +48,7 @@ public class FXMLController {
     	
     	String pattern = "[a-zA-Z]*";
     	
-    	if(spazio!=0) {
+    	if(spazio!=0) {    //se le parole sono 2 -> una è la parola aliena e l'altra è la traduzione
     		
     	String parolaAliena=parole.substring(0, spazio);
     	String traduzione=parole.substring(spazio+1, parole.length());
@@ -62,19 +62,16 @@ public class FXMLController {
     	//txtRisultato.setText("ho aggiunto:"+parolaAliena+""+traduzione);
     	  	
     	}
-    	else {
+    	else  {    //altrimenti se è solo 1 è perchè cerco la traduzione
     		
-    		if( !parole.matches(pattern)) {
+    		if( !parole.matches("[a-zA-Z?]*")) {
 	    		txtRisultato.setText("ERRORE: La parola non contiene solo lettere");
 	    		return;
 	    	}
-    		
-//    		if(dd.getMappaParole().get(parole)==null)
-//    		txtRisultato.setText("ERRORE: Non è ancora stata inserita nessuna traduzione per la parola");
-   		
-    		else if (parole.matches("[a-zA-Z?]*")){
+    		  		
+    		else if (parole.matches("[a-zA-Z?]*")){    
     			
-    			int numPuntiDomanda = 0;
+    			int numPuntiDomanda = 0;              //verifico che ci sia un solo punto di domanda
     			for(int i=0; i<parole.length(); i++) 
     				if(parole.charAt(i)=='?')
     					numPuntiDomanda++;
@@ -83,13 +80,10 @@ public class FXMLController {
     				txtRisultato.setText("Troppe lettere incognite per trovare una traduzione");
     			else if(dd.translateWord(parole)==null)
     				txtRisultato.setText("La parola non ha traduzione nel dizionario");
-    			
-    	}else {
-    			
+    			else 
+    			 txtRisultato.setText(dd.translateWord(parole).toString());
 //    			if(parole.contains("?")) {	
 //    			}
-    			
-    	    txtRisultato.setText(dd.translateWord(parole).toString());
     		}
     	}
     	
