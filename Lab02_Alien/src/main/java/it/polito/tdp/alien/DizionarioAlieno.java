@@ -38,10 +38,15 @@ public class DizionarioAlieno {
 	}
 
 	//primo punto String
-	public Set<String> translateWord (String parolaAliena) {
+	public String translateWord (String parolaAliena) {
 		
-		if(mappaParole.get(parolaAliena)!=null)
-		return mappaParole.get(parolaAliena.toLowerCase());
+		if(mappaParole.get(parolaAliena.toLowerCase())!=null) {
+			String y="";
+			for(String s : mappaParole.get(parolaAliena.toLowerCase()) )
+				y+=s+" \n";
+			
+			return y;
+		}
 		
 		else if(parolaAliena.contains("?")) {
 			
@@ -51,7 +56,7 @@ public class DizionarioAlieno {
 				int x=0;
 				   for(int i=0; i<parolaAliena.length();i++) {   //scannarizzo lettera per lettera la parola aliena contente "?"
 					    if(parolaAliena.length()==s.length()) {  //le due parole devono avere lo stesso numero di caratteri                   
-					    	if(s.charAt(i)==parolaAliena.charAt(i))  //se le lettere coincidono
+					    	if(s.charAt(i)==parolaAliena.toLowerCase().charAt(i))  //se le lettere coincidono
 					    		x++;                                 //incremento il contatore che mi dice quante lettere sono simili a quelle di parolaAliena
 						
 					}
@@ -66,8 +71,13 @@ public class DizionarioAlieno {
 		}
 			if(temp.isEmpty()) 
 				return null;
-			else
-				return temp;
+			else {
+				String x="";
+				for(String s : temp )
+					x+=s+" \n";
+				
+				return x;
+			}
 			
 		}
 		return null;
